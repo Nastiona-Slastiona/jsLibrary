@@ -69,6 +69,7 @@
 
 
 let array = [1, 3, '5', 7, 9 , 10];
+
 alert(
     "myLib.isArray([1, 2, 3]) => " + myLib.isArray([1, 2, 3]) +
     "\nmyLib.isArray({}) => " + myLib.isArray({}));
@@ -93,6 +94,7 @@ alert(
 alert(
     "myLib.isFunction('function') => " + myLib.isFunction('function') +
     "\nmyLib.isFunction( () => prompt('How old are you?', '25') ) => " + myLib.isFunction( () => prompt('How old are you?', '25') ) );
+
 alert('Second part of the task: work with arrays');
 alert(
     'let array = [1, 3, \'5\', 7, 9 , 10];\n' +
@@ -101,6 +103,7 @@ alert(
     '\nmyLib.skip(array, 3) => ' + myLib.skip(array, 3) +
     '\nmyLib.take(array, 5) => ' + myLib.take(array, 5) 
 );
+
 array = [1, 3, '5', 7, 9 , 10];
 alert('Third part of the task: chaining');
 alert(
