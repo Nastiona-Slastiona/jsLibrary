@@ -28,6 +28,7 @@
 
         _myLibraryObject.isFunction = obj =>
             stringRepresentation.call(obj) === '[object Function]';
+           
             
         // Work with arrays
         _myLibraryObject.first = arr => arr[0];
@@ -35,11 +36,27 @@
 
         _myLibraryObject.skip = function(arr, number) {
             return arr.splice(number,);
-        }
+        };
         _myLibraryObject.take = function(arr, number) {
             return arr.splice(0, number);
-        }
-       
+        };
+
+        // Chaining
+        _myLibraryObject.array = [];
+        _myLibraryObject.asChain = function(array) {
+            _myLibraryObject.array = array;
+            _myLibraryObject.skip = _myLibraryObject.skipWrapper;
+            _myLibraryObject.take = _myLibraryObject.takeWrapper;
+            return _myLibraryObject;
+        };
+        _myLibraryObject.skipWrapper = function(number){
+            _myLibraryObject.array = _myLibraryObject.array.splice(number,);
+            return _myLibraryObject;
+        };
+        _myLibraryObject.takeWrapper = function(number){
+            _myLibraryObject.array = _myLibraryObject.array.splice(0, number);
+            return _myLibraryObject;
+        };
 
         return _myLibraryObject;
     }
@@ -51,7 +68,8 @@
 })(global); 
 
 
-let array = [1, 3, '5'];
-console.log( myLib.isFunction(myLib.isArray) );
-console.log( myLib.last(['1', '2', '3']) );
-console.log( myLib.skip(array, 2).length);
+let array = [1, 3, '5', 7, 9 , 10];
+// console.log( myLib.isFunction(myLib.isArray) );
+// console.log( myLib.last(['1', '2', '3']) );
+// console.log( myLib.skip(array, 2).length);
+console.log( myLib.asChain(array).skip(1).take(2).array );
