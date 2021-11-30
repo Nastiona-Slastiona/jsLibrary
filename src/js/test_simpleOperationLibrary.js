@@ -2,9 +2,9 @@ import { simpleOperationLibrary } from "./simpleOperationLib.js";
 
 const testArray = [1, 3, '5', 7, 9 , 10];
 const simpleOperationLib = simpleOperationLibrary();
-// alert(
-//     "simpleOperationLib.isArray([1, 2, 3]) => " + simpleOperationLib.isArray([1, 2, 3]) +
-//     "\nsimpleOperationLib.isArray({}) => " + simpleOperationLib.isArray({}));
+alert(
+    "simpleOperationLib.isArray([1, 2, 3]) => " + simpleOperationLib.isArray([1, 2, 3]) +
+    "\nsimpleOperationLib.isArray({}) => " + simpleOperationLib.isArray({}));
 // alert(
 //     "simpleOperationLib.isBoolean('') => " + simpleOperationLib.isBoolean('') +
 //     "\nsimpleOperationLib.isBoolean(false) => " + simpleOperationLib.isBoolean(false) );
