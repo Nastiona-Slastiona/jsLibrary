@@ -46,12 +46,22 @@
         }
 
         simpleOpLib.skip = function(arr, number) {
-            return arr.length > number ? arr.slice(number) : ' The length of the array is too short ';
+            if ( simpleOpLib.isArray(arr) ) {
+                return arr.length > number ? arr.slice(number) : ' The length of the array is too short ';
+            } else if ( simpleOpLib.isUndefined(number) || simpleOpLib.isNumber(arr) ) {
+                simpleOpLib.array =  simpleOpLib.skip(simpleOpLib.array, arr);
+                return simpleOpLib;
+            } else  return 'Error. Check input parametrs';
         };
 
         simpleOpLib.take = function(arr, number) {
-            return  arr.length >= number ? arr.slice(0, number) : arr.length != 0 ?
+            if ( simpleOpLib.isArray(arr) ) {
+                return  arr.length >= number ? arr.slice(0, number) : arr.length != 0 ?
                 'The length of the arraye isn\'t enough there are only the next elements: ' + arr : emptyArray;
+            } else if ( simpleOpLib.isUndefined(number) || simpleOpLib.isNumber(arr) ) {
+                simpleOpLib.array = simpleOpLib.take(simpleOpLib.array, arr);
+                return simpleOpLib;
+            } else return 'Error. Check input parametrs';
         };
 
         // Chaining
@@ -59,18 +69,6 @@
 
         simpleOpLib.asChain = function(array) {
             simpleOpLib.array = array;
-            // simpleOpLib.skip = simpleOpLib.skipWrapper;
-            // simpleOpLib.take = simpleOpLib.takeWrapper;
-            return simpleOpLib;
-        };
-
-        simpleOpLib.skipWrapper = function(number){
-            simpleOpLib.array = simpleOpLib.skip(simpleOpLib.array, number);
-            return simpleOpLib;
-        };
-        
-        simpleOpLib.takeWrapper = function(number){
-            simpleOpLib.array = simpleOpLib.take(simpleOpLib.array, number);
             return simpleOpLib;
         };
 
@@ -84,7 +82,7 @@
 })(window); 
 
 
-const testArray = [1, 3, '5', 7, 9, 10];
+// const testArray = [1, 3, '5', 7, 9, 10];
 
 // alert(
 //     "simpleOperationLib.isArray([1, 2, 3]) => " + simpleOperationLib.isArray([1, 2, 3]) +
@@ -119,18 +117,18 @@ const testArray = [1, 3, '5', 7, 9, 10];
 //     "\nsimpleOperationLib.isFunction( () => prompt('How old are you?', '25') ) => " + simpleOperationLib.isFunction( () => prompt('How old are you?', '25') ) );
 
 
-alert('Second part of the task: work with arrays');
+// alert('Second part of the task: work with arrays');
 
-alert(
-    'let array = [1, 3, \'5\', 7, 9 , 10];\n' +
-    'simpleOperationLib.first(array) => ' + simpleOperationLib.first([]) +
-    '\nsimpleOperationLib.last(array) => ' + simpleOperationLib.last(testArray) +
-    '\nsimpleOperationLib.skip(array, 3) => ' + simpleOperationLib.skip(testArray, 3) +
-    '\nsimpleOperationLib.take(array, 5) => ' + simpleOperationLib.take(testArray, 5) 
-);
+// alert(
+//     'let array = [1, 3, \'5\', 7, 9 , 10];\n' +
+//     'simpleOperationLib.first(array) => ' + simpleOperationLib.first([]) +
+//     '\nsimpleOperationLib.last(array) => ' + simpleOperationLib.last(testArray) +
+//     '\nsimpleOperationLib.skip(array, 3) => ' + simpleOperationLib.skip(testArray, 3) +
+//     '\nsimpleOperationLib.take(array, 5) => ' + simpleOperationLib.take(testArray, 5) 
+// );
 
-alert('Third part of the task: chaining');
-alert(
-    'let array = [1, 3, \'5\', 7, 9 , 10];\n' +
-    'simpleOperationLib.asChain(array).skip(2).take(3).array => ' + simpleOperationLib.asChain(testArray).skip(2).take(3).array
-);
+// alert('Third part of the task: chaining');
+// alert(
+//     'let array = [1, 3, \'5\', 7, 9 , 10];\n' +
+//     'simpleOperationLib.asChain(array).skip(2).take(3).array => ' + simpleOperationLib.asChain(testArray).skip(2).take(3).array
+// );

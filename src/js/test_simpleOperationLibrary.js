@@ -1,4 +1,4 @@
-import {simpleOperationLibrary} from "./simpleOperationLib";
+import { simpleOperationLibrary } from "./simpleOperationLib.js";
 
 const testArray = [1, 3, '5', 7, 9 , 10];
 const simpleOperationLib = simpleOperationLibrary();
@@ -27,14 +27,14 @@ const simpleOperationLib = simpleOperationLibrary();
 //     "simpleOperationLib.isFunction('function') => " + simpleOperationLib.isFunction('function') +
 //     "\nsimpleOperationLib.isFunction( () => prompt('How old are you?', '25') ) => " + simpleOperationLib.isFunction( () => prompt('How old are you?', '25') ) );
 
-alert('Second part of the task: work with arrays');
-alert(
-    'let array = [1, 3, \'5\', 7, 9 , 10];\n' +
-    'simpleOperationLib.first(array) => ' + simpleOperationLib.first([]) +
-    '\nsimpleOperationLib.last(array) => ' + simpleOperationLib.last(testArray) +
-    '\nsimpleOperationLib.skip(array, 3) => ' + simpleOperationLib.skip(testArray, 3) +
-    '\nsimpleOperationLib.take(array, 5) => ' + simpleOperationLib.take(testArray, 5) 
-);
+// alert('Second part of the task: work with arrays');
+// alert(
+//     'let array = [1, 3, \'5\', 7, 9 , 10];\n' +
+//     'simpleOperationLib.first(array) => ' + simpleOperationLib.first([]) +
+//     '\nsimpleOperationLib.last(array) => ' + simpleOperationLib.last(testArray) +
+//     '\nsimpleOperationLib.skip(array, 3) => ' + simpleOperationLib.skip(testArray, 3) +
+//     '\nsimpleOperationLib.take(array, 5) => ' + simpleOperationLib.take(testArray, 5) 
+// );
 
 // array = [1, 3, '5', 7, 9 , 10];
 // alert('Third part of the task: chaining');
