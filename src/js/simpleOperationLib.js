@@ -2,17 +2,17 @@ const EMPTY_ARRAY_MESSAGE = 'There is no element in the array';
 const WRONG_PARAMETRS_MESSAGE = 'Wrong parametr. Check attentively parametrs';
 const SHORT_LENGTH_MESSAGE = ' The length of the array is too short ';
 
-function isNotEmptyArray(arr) {
-    if(arr.length === 0) {
-        return false;
-    }
-
-    return true;
-}
-
 export function simpleOperationLibrary() {
     const simpleOpLib = {};
+
+    function isNotEmptyArray(arr) {
+        if(arr.length === 0) {
+            return false;
+        }
     
+        return true;
+    }
+
     // First part of the task: type inditification 
     simpleOpLib.isArray = obj =>
         obj instanceof Array;
@@ -44,7 +44,9 @@ export function simpleOperationLibrary() {
             return WRONG_PARAMETRS_MESSAGE;
         }
         
-        return isNotEmptyArray(arr) ? arr[0] : EMPTY_ARRAY_MESSAGE;
+        return isNotEmptyArray(arr) 
+            ? arr[0] 
+            : EMPTY_ARRAY_MESSAGE;
     }
 
     simpleOpLib.last = arr => {
@@ -52,16 +54,20 @@ export function simpleOperationLibrary() {
             return WRONG_PARAMETRS_MESSAGE;
         }
 
-        return isNotEmptyArray(arr) ? arr[arr.length - 1] : EMPTY_ARRAY_MESSAGE;
+        return isNotEmptyArray(arr) 
+            ? arr[arr.length - 1] 
+            : EMPTY_ARRAY_MESSAGE;
     }
 
     simpleOpLib.skip = function(arr, number) {
         if (simpleOpLib.isArray(arr)) {
-            return arr.length > number ? arr.slice(number) : SHORT_LENGTH_MESSAGE;
-
+            return arr.length > number 
+            ? arr.slice(number) 
+            : SHORT_LENGTH_MESSAGE;
         } 
         
-        if (simpleOpLib.isUndefined(number) || simpleOpLib.isNumber(arr)) {
+        if (simpleOpLib.isUndefined(number) 
+            || simpleOpLib.isNumber(arr)) {
             simpleOpLib.array =  simpleOpLib.skip(simpleOpLib.array, arr);
 
             return simpleOpLib;
@@ -72,16 +78,18 @@ export function simpleOperationLibrary() {
 
     simpleOpLib.take = function(arr, number) {
         if (simpleOpLib.isArray(arr)) {
-            return  arr.length >= number ? arr.slice(0, number) : arr.length != 0 ?
-            SHORT_LENGTH_MESSAGE : EMPTY_ARRAY_MESSAGE;
-
+            return  arr.length >= number 
+                    ? arr.slice(0, number) 
+                    : isNotEmptyArray(arr)
+                    ? SHORT_LENGTH_MESSAGE 
+                    : EMPTY_ARRAY_MESSAGE;
         }
         
-        if (simpleOpLib.isUndefined(number) || simpleOpLib.isNumber(arr)) {
+        if (simpleOpLib.isUndefined(number) 
+            || simpleOpLib.isNumber(arr)) {
             simpleOpLib.array = simpleOpLib.take(simpleOpLib.array, arr);
 
             return simpleOpLib;
-
         }
         
         return WRONG_PARAMETRS_MESSAGE;
