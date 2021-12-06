@@ -1,8 +1,17 @@
+const EMPTY_ARRAY_MESSAGE = 'There is no element in the array';
+const WRONG_PARAMETRS_MESSAGE = 'Wrong parametr. Check attentively parametrs';
+const SHORT_LENGTH_MESSAGE = ' The length of the array is too short ';
+
+function isNotEmptyArray(arr) {
+    if(arr.length === 0) {
+        return false;
+    }
+
+    return true;
+}
+
 export function simpleOperationLibrary() {
     const simpleOpLib = {};
-    const stringRepresentation = Object.prototype.toString;
-    const emptyArray = 'There is no element in the array';
-    const wrongParametr = 'Wrong parametr. Check attentively parametrs';
     
     // First part of the task: type inditification 
     simpleOpLib.isArray = obj =>
@@ -29,57 +38,56 @@ export function simpleOperationLibrary() {
     simpleOpLib.isFunction = obj =>
         typeof obj == 'function';
         
-        
     // Work with arrays 
     simpleOpLib.first = arr => {
-        if( simpleOpLib.isArray(arr) ) {
-            return arr.length != 0 ? arr[0] : emptyArray ;
-        } else
-            return wrongParametr;
+        if(!simpleOpLib.isArray(arr)) {
+            return WRONG_PARAMETRS_MESSAGE;
+        }
+        
+        return isNotEmptyArray(arr) ? arr[0] : EMPTY_ARRAY_MESSAGE;
     }
 
     simpleOpLib.last = arr => {
-        if( simpleOpLib.isArray(arr) ) {
-            return arr.length != 0 ? arr[arr.length - 1] : emptyArray;
-        } else
-            return wrongParametr;
+        if(!simpleOpLib.isArray(arr)) {
+            return WRONG_PARAMETRS_MESSAGE;
+        }
+
+        return isNotEmptyArray(arr) ? arr[arr.length - 1] : EMPTY_ARRAY_MESSAGE;
     }
 
-    // simpleOpLib.checkTwoParam = function(arr, num, funcName) {
-    //     if ( simpleOpLib.isArray(arr) ) {
-    //         return true;
-    //     } else if ( simpleOpLib.isUndefined(num) || simpleOpLib.isNumber(arr) ) {
-    //         simpleOpLib.func = new Function();
-    //         simpleOpLib.func.name = funcName;
-    //         simpleOpLib.array =  simpleOpLib.func(simpleOpLib.array, arr);
-    //         return simpleOpLib;
-    //     } else  return wrongParametr;
-    // }
-
     simpleOpLib.skip = function(arr, number) {
-        if ( simpleOpLib.isArray(arr) ) {
-            return arr.length > number ? arr.slice(number) : 
-            ' The length of the array is too short ';
-        } else if ( simpleOpLib.isUndefined(number) || simpleOpLib.isNumber(arr) ) {
+        if (simpleOpLib.isArray(arr)) {
+            return arr.length > number ? arr.slice(number) : SHORT_LENGTH_MESSAGE;
+
+        } 
+        
+        if (simpleOpLib.isUndefined(number) || simpleOpLib.isNumber(arr)) {
             simpleOpLib.array =  simpleOpLib.skip(simpleOpLib.array, arr);
+
             return simpleOpLib;
-        } else  return wrongParametr;
+        } 
+        
+        return WRONG_PARAMETRS_MESSAGE;
     };
 
     simpleOpLib.take = function(arr, number) {
-        if ( simpleOpLib.isArray(arr) ) {
+        if (simpleOpLib.isArray(arr)) {
             return  arr.length >= number ? arr.slice(0, number) : arr.length != 0 ?
-            'The length of the arraye isn\'t enough there are only the next elements: ' + arr :
-            emptyArray;
-        } else if ( simpleOpLib.isUndefined(number) || simpleOpLib.isNumber(arr) ) {
+            SHORT_LENGTH_MESSAGE : EMPTY_ARRAY_MESSAGE;
+
+        }
+        
+        if (simpleOpLib.isUndefined(number) || simpleOpLib.isNumber(arr)) {
             simpleOpLib.array = simpleOpLib.take(simpleOpLib.array, arr);
+
             return simpleOpLib;
-        } else return wrongParametr;
+
+        }
+        
+        return WRONG_PARAMETRS_MESSAGE;
     };
 
     // Chaining
-    simpleOpLib.array = [];
-
     simpleOpLib.asChain = function(array) {
         simpleOpLib.array = array;
         return simpleOpLib;
