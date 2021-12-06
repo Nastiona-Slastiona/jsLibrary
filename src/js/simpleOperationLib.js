@@ -6,28 +6,28 @@ export function simpleOperationLibrary() {
     
     // First part of the task: type inditification 
     simpleOpLib.isArray = obj =>
-        stringRepresentation.call(obj) === '[object Array]';
+        obj instanceof Array;
 
     simpleOpLib.isBoolean = obj =>
-        stringRepresentation.call(obj) === '[object Boolean]';
+        typeof obj == 'boolean';
 
     simpleOpLib.isNumber = obj =>
-        stringRepresentation.call(obj) === '[object Number]';
+        typeof obj == 'number';
 
     simpleOpLib.isDate = obj =>
-        stringRepresentation.call(obj) === '[object Date]';
+        obj instanceof Date;
 
     simpleOpLib.isString = obj =>
-        stringRepresentation.call(obj) === '[object String]';
+        typeof obj == 'string';
     
     simpleOpLib.isUndefined = obj =>
-        stringRepresentation.call(obj) === '[object Undefined]';
+        typeof obj == 'undefined';
 
     simpleOpLib.isNull = obj =>
-        stringRepresentation.call(obj) === '[object Null]'; 
+        obj === null; 
 
     simpleOpLib.isFunction = obj =>
-        stringRepresentation.call(obj) === '[object Function]';
+        typeof obj == 'function';
         
         
     // Work with arrays 
@@ -44,6 +44,17 @@ export function simpleOperationLibrary() {
         } else
             return wrongParametr;
     }
+
+    // simpleOpLib.checkTwoParam = function(arr, num, funcName) {
+    //     if ( simpleOpLib.isArray(arr) ) {
+    //         return true;
+    //     } else if ( simpleOpLib.isUndefined(num) || simpleOpLib.isNumber(arr) ) {
+    //         simpleOpLib.func = new Function();
+    //         simpleOpLib.func.name = funcName;
+    //         simpleOpLib.array =  simpleOpLib.func(simpleOpLib.array, arr);
+    //         return simpleOpLib;
+    //     } else  return wrongParametr;
+    // }
 
     simpleOpLib.skip = function(arr, number) {
         if ( simpleOpLib.isArray(arr) ) {

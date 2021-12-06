@@ -36,9 +36,8 @@ alert(
     '\nsimpleOperationLib.take(array, 5) => ' + simpleOperationLib.take(testArray, 5) 
 );
 
-array = [1, 3, '5', 7, 9 , 10];
 alert('Third part of the task: chaining');
 alert(
     'let array = [1, 3, \'5\', 7, 9 , 10];\n' +
-    'simpleOperationLib.asChain(array).skip(2).take(3).array => ' + simpleOperationLib.asChain(array).skip(2).take(3).array
+    'simpleOperationLib.asChain(array).skip(2).take(3).array => ' + simpleOperationLib.asChain(testArray).skip(2).take(3).array
 );
